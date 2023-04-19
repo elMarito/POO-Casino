@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@types/node": "^18.15.11",
+    "ascii-text-generator": "^1.0.5",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
