@@ -1,29 +1,30 @@
 import readlineSync from 'readline-sync'
-import { iJuegoDeCasino } from "./iJuegoDeCasino";
-export class Ruleta implements iJuegoDeCasino {
+import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
+export class Ruleta extends JuegoDeCasino {
 
   private numeros: number[];
   private colores: string[];
   private resultado: number;
-  nombre: string;
-  apuestaMinima: number;
-  apuestaMaxima: number;
-  dineroDisponible: number;
-  dineroApostado: number;
+  //nombre: string;
+  //apuestaMinima: number;
+ // apuestaMaxima: number;
+ // dineroDisponible: number;
+ // dineroApostado: number;
 
   constructor(resultado:number,nombre:string,apuestaMinima: number, apuestaMaxima: number, dineroDisponible:number, dineroApostado:number) {
+   super(apuestaMinima,apuestaMaxima)
     this.numeros = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26];
     this.colores = ["verde", "rojo", "negro", "rojo", "negro", "rojo", "negro", "rojo", "negro", "negro", "rojo", "negro", "negro", "rojo", "negro", "rojo", "rojo", "negro", "rojo", "negro", "negro", "rojo", "negro", "rojo", "negro", "negro", "rojo", "negro", "negro", "rojo", "negro", "rojo", "negro", "rojo", "negro", "rojo", "negro"];
     this.resultado = 0;
     this.nombre = "Ruleta";
-    this.apuestaMinima = apuestaMinima;
-    this.apuestaMaxima = apuestaMaxima;
-    this.dineroDisponible = 0;
-    this.dineroApostado = 0;
+    //this.apuestaMinima = apuestaMinima;
+    //this.apuestaMaxima = apuestaMaxima;
+    //this.dineroDisponible = 0;
+   // this.dineroApostado = 0;
   }
 
-  jugar(): void {
-    this.presentarJuego();
+  //jugar(): void {
+    /*this.presentarJuego();
     this.inicializarJuego();
     try {
       this.solicitarApuesta();
@@ -40,9 +41,21 @@ export class Ruleta implements iJuegoDeCasino {
       }
     }
 
-  }
+  }*/
   iniciarJuego() {
+   //agregar los metodos para interartuar con el usuario 
 
+  }
+  public solicitarCreditos(): number {
+    console.log(`-`.repeat(80));
+    console.log(`Ud. dispone de ${this.formatoDinero(this.dineroDisponible)} para apostar. 
+    Ingrese la cantidad destinada a este giro.
+    Al presionar (ENTER) se accionara ${this.emojis.palanca} el tragamonedas.
+    (si no ingresa un monto al presionar (ENTER) abandonara el juego.)`);
+    const dinero: number = Number(readlineSync.question("Apuesta: "));
+    // TODO               verificar si pone letras
+// modificar
+    return dinero;
   }
   inicializarJuego() {
     console.log("inicializando juego")
@@ -50,7 +63,8 @@ export class Ruleta implements iJuegoDeCasino {
 
   public presentarJuego(): void {
     console.log(`=`.repeat(80));
-    console.log(`          Ud a elegido el juego.....${this.nombre.toLocaleUpperCase()}....`); console.log(`-`.repeat(80));
+    console.log(`          Ud a elegido el juego.....${this.nombre.toLocaleUpperCase()}....`); 
+    console.log(`-`.repeat(80));
     console.log(` Reglas: 
       para poder jugar Ud. debe ingresar......................... de acuerdo a la siguiente tabla.`);
     console.log(` Opciones de Apuestas: 
@@ -62,7 +76,7 @@ export class Ruleta implements iJuegoDeCasino {
     console.log(` Uds. Dispone de $(this.dineroDisponible)} para apostar.`);
     console.log(`=`.repeat(80));
   }
-  private solicitarApuesta(): void {
+  /*private solicitarApuesta(): void {
     let dinero: number = 0; //, datos: string[];
     do {
       console.log(`-`.repeat(80));
@@ -76,8 +90,8 @@ export class Ruleta implements iJuegoDeCasino {
     } while (!this.apuestaEsValida(dinero));
     // si cancela la apuesta o si no dispone de dinero tirar error
     this.dineroDisponible = dinero;
-  }
-  private apuestaEsValida(dinero: number, max?: number): boolean {
+  }*/
+  protected apuestaEsValida(dinero: number, max?: number): boolean {
     if (max === undefined) max = this.apuestaMaxima;
     if (dinero >= this.apuestaMinima && dinero <= max) return true;
     // throw new Error("Operacion cancelada. Ud. abandono el Juego.");
