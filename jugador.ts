@@ -1,3 +1,4 @@
+import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
 
 export class Jugador {
     private nombre: string;
@@ -14,8 +15,11 @@ export class Jugador {
     public getEdad(): number { return this.edad }
     public esMayorDeEdad(): boolean { return this.edad >= 18 }
     public agregarFondos(dinero: number): void { this.fondos += dinero }    
-    // public jugar(juego): void { juego.jugar() }
+    
+    // public jugar(juego:JuegoDeCasino): void { juego.jugar(this) }
+    // public jugar(juego:JuegoDeCasino): void { juego.jugar() }
+
     public apostar(dinero: number): void { this.fondos -= dinero }
-    // public pagar(dinero: number): void { this.fondos -= dinero }
+    // public pagarApuesta(dinero: number): void { this.fondos -= dinero }
     public cobrar(dinero: number): void { this.fondos += dinero }
 }

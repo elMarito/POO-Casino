@@ -1,59 +1,76 @@
-//import readlineSync from 'readline-sync';
-import * as readlineSync from "readline-sync"; // formato typscrypt
-import { iJuegoDeCasino } from "./iJuegoDeCasino";
-// import { JuegoDeCasino } from "./iJuegoDeCasino";
-// import { Blackjack } from "./blackJack";
-// import { Ruleta } from "./ruleta";
-// import { Dados } from "./dados";
-import { Tragamonedas } from "./tragamonedas";
-import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
+import ascii_text_generator from 'ascii-text-generator';
+// const ascii_text_generator = require('ascii-text-generator');
+import readlineSync from 'readline-sync';
+// import * as readlineSync from "readline-sync"; // formato typscrypt
+import { Poker } from "./poker";
+import { Ruleta } from "./ruleta";
+// import { Tragamonedas } from "./tragamonedas";
+import { TragamonedasClasico } from './TragamonedasClasico';
+import { TragamonedasMultilinea } from './TragamonedasMultilinea';
+
+// import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
 import { Jugador } from "./jugador";
 //-----------------------------------------------------------------------------
 export class Casino {
     private nombre: string;
     private direccion: string;
     private localidad: string;
-    private jugadores: Jugador[];
-    // private juegos: iJuegoDeCasino[];
-    private juegos: Tragamonedas[];
-    // private juegos: {Tragamonedas | Tragamonedas | Poker | Ruleta}[];
+    // private jugador: Jugador;
 
-    // private tragaMonedasClasico: Tragamonedas; //TragamonedasBasico
-    // private tragaMonedasExtendido: Tragamonedas; //TragamonedasExtendido
-    // private poker: Poker;
-    // private ruleta: Ruleta;
-    // private fondos: number;
+    // private juegos: JuegoDeCasino[];
+    // private juegos: (TragamonedasClasico | TragamonedasMultilinea | Poker | Ruleta)[];
+    // private juegos: (TragamonedasClasico | TragamonedasMultilinea | Poker )[];
+    private tragamonedasClasico: TragamonedasClasico;
+    private tragamonedasMultilinea: TragamonedasMultilinea;
+    private poker: Poker;
+    private ruleta: Ruleta;
+
+    private fondos: number; //Caja, Ganancias, ?
     //-------------------------------------------------------------------------
     // constructor(nombre: string, direccion: string, localidad: string, juegos?: iJuegoDeCasino[]) {
     // constructor(nombre: string, direccion: string, localidad: string, juegos?: JuegoDeCasino[]) {
-    constructor(nombre: string, direccion: string, localidad: string, juegos?: Tragamonedas[]) {
+    constructor(nombre: string, direccion: string, localidad: string, fondos: number,
+        tragamonedasClasico: TragamonedasClasico,
+        tragamonedasMultilinea: TragamonedasMultilinea,
+        poker: Poker,
+        ruleta: Ruleta) {
+
         this.nombre = nombre
         this.direccion = direccion
         this.localidad = localidad
-        this.jugadores=[];
+        this.fondos = fondos;   //Caja, Ganancias, ?
+        this.tragamonedasClasico = tragamonedasClasico;
+        this.tragamonedasMultilinea = tragamonedasMultilinea;
+        this.poker = poker;
+        this.ruleta = ruleta;
+
+        /* this.jugador = [];
         if (juegos !== undefined) this.juegos = juegos
         else {
             this.juegos = [];
-            // this.juegos = [new Tragamonedas(2, 1000)]; //juegos;
-            this.juegos.push(new Tragamonedas(2, 1000))
-            // this.juegos.push(new Tragamonedas(2, 1000))
-            // this.juegos.push(new Ruleta(2, 1000))
-            // this.juegos.push(new BlackJack(2, 1000))
-            // this.juegos.push(new Dados(2, 1000))
-        }
-        // this.tragaMonedasClasico=tragaMonedasClasico;
-        // this.tragaMonedasExtendido=tragaMonedasExtendido;
-        // this.poker=poker;
-        // this.ruleta=ruleta;
-
-        // this.fondos = 0;
+            this.juegos.push(new TragamonedasClasico(2, 1000))
+            this.juegos.push(new TragamonedasMultilinea(2, 1000))
+            this.juegos.push(new Poker())
+            this.juegos.push(new Ruleta(2, 1000))
+        } */
         // casino.agregarJuego(new BlackJack(1, 100, 10))
     }
-    public ingresar(jugador: Jugador) {
-        this.jugadores.push(jugador);
-        this.Jugar(jugador);
-        // this.jugador = jugador;
-    }
+    // public recibir(jugador: Jugador):void {
+    //     // this.jugador = jugador;
+    //     // this.jugador.push(jugador);
+    //     this.Jugar(jugador);
+    //     // this.jugador.pop();
+    //     // this.jugador = undefined;
+    // }
+    //-------------------------------------------------------------------------
+    // public cobrarApuesta(jugador: Jugador, juego: (TragamonedasClasico | TragamonedasMultilinea | Poker)): void {
+    //     // this.fondos += juego.cobrarApuesta()
+    //     this.fondos += jugador.pagarApuesta()
+    // }
+    // public pagarApuesta(jugador: Jugador): void {
+    //     this.fondos -= jugador.pagarApuesta()
+    // }
+
     //-------------------------------------------------------------------------
     // public getNombre(): string { return this.nombre }
     // public setNombre(pnombre: string): void { this.nombre = pnombre }
@@ -64,14 +81,45 @@ export class Casino {
     //-------------------------------------------------------------------------
     // public agregarJuego(juego: iJuegoDeCasino): void { this.juegos.push(juego) }
     // public agregarJuego(juego: JuegoDeCasino): void { this.juegos.push(juego) }
-    public agregarJuego(juego: Tragamonedas): void { this.juegos.push(juego) }
+    // public agregarJuego(juego: (TragamonedasClasico | TragamonedasMultilinea | Poker | Ruleta)): void { this.juegos.push(juego) }
+    // public agregarJuego(juego: (TragamonedasClasico | TragamonedasMultilinea | Poker )): void { this.juegos.push(juego) }
     //-------------------------------------------------------------------------
-    public Jugar(jugador: Jugador /*, juego: JuegoDeCasino */): void {
+    private chquearFondos(jugador: Jugador): void {
+        // if (this.fondos === 0) console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
+        if (jugador.getFondos() === 0) {
+            console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
+            console.log("si desea ingresarlos ahora presione si, de lo contrario le seran solicitados al ingresar a un juego.");
+            let respuesta = readlineSync.keyInYN("Desea ingresar fondos ahora?");
+            if (respuesta) this.solicitarFondos(jugador)
+        }
+        else console.log(`Ud. disponde de ${jugador.getFondos()} para jugar o cobrar.`);
+        // else console.log(`Ud. disponde de $ ${this.fondos} para jugar o cobrar.`);
+
+        //JuegoDeCasino.formatoDinero
+    }
+    private solicitarFondos(jugador: Jugador): void {
+        let dinero: number = 0;
+        console.log(`-`.repeat(80)); // 💲
+        //   console.log(this.emojis.error, `Por favor ingrese la candidad de dinero para Jugar : 
+        console.log(`Por favor ingrese la candidad de dinero para Jugar : 
+           (si la cantidad ingresada no alcanza para el juego elegido, al ingresar se le solicitara mas dinero).
+           (ENTER): para cancelar y abandonar el casino.`);
+        dinero = Number(readlineSync.question("Fondos: "));
+        if (dinero <= 0) throw new Error("Operacion cancelada. Ud. abandono el casino.");
+        // if (dinero > 0) apuestaEsValida(dinero);
+        // si cancela la apuesta o si no dispone de dinero tirar error
+        jugador.agregarFondos(dinero)
+        // this.dineroDisponible = dinero;
+    }
+
+    public recibir(jugador: Jugador): void {
         this.presentarCasino();
         console.log(`Bienvenido ${jugador.getNombre()}!`);
 
         let opcionMenu: number = 0; //, datos: string[];
         do {
+            this.chquearFondos(jugador);
+            // jugador.getFondos()
             // if (this.fondos === 0) console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
             // else console.log(`Ud. disponde de $ ${this.fondos} para jugar o cobrar.`);
             opcionMenu = this.elegirJuego();
@@ -80,13 +128,15 @@ export class Casino {
                     console.clear();
                     console.log("Adios. Gracias por jugar con nosotros!");
                     break;
-                case 1: case 2: case 3: case 4: case 5: {
-                    console.clear();
-                    this.juegos[opcionMenu - 1].jugar()
-                    break;
-                }
-                // case 6:
-                //  {   console.log(`dinero disponible  ${this.dineroDisponible}`); }
+                // case 1: { this.tragamonedasClasico.jugar(jugador); break; }
+                case 1: this.tragamonedasClasico.jugar(); break;
+                case 2: this.tragamonedasMultilinea.jugar(); break;
+                case 3: this.poker.jugar(); break;
+                case 4: this.ruleta.jugar(); break;
+                // case 1: case 2: case 3: case 4: case 5: {
+                //     this.juegos[opcionMenu - 1].jugar()
+                //     break;
+                // }
                 default: {
                     console.log(`❗ Opcion incorrecta. vuelva a intentarlo.`);
                     // let beep = require('beepbeep');
@@ -99,10 +149,10 @@ export class Casino {
             // if (evento > 0 && evento < 6) this.juegos[evento].jugar()
             // if (evento = 6) console.log(`dinero disponible  ${dinerooooo}`);
         } while (opcionMenu !== 0)
+        //mensaje de despedida. fondos
     }
     //-------------------------------------------------------------------------
     private presentarCasino(): void {
-        const ascii_text_generator = require('ascii-text-generator');
         console.clear();
         // let text = "/*\n" + ascii_text_generator(`Bienvenido al casino "ROYALE"`, "2") + "\\n*/";
         console.log(`=`.repeat(80));
@@ -120,13 +170,17 @@ export class Casino {
         // console.log("dar a elegir el juego");
     }
     //-------------------------------------------------------------------------
-    private crearMenu(): string[] { return this.juegos.map(j => j.getNombre()); }
+    // private crearMenu(): string[] { return this.juegos.map(j => j.getNombre()); }
     //-------------------------------------------------------------------------
     private elegirJuego(): number {
-        // let menu = ['Tragamonedas (Modalidad Basica)'
-        // , 'Tragamonedas (Modalidad Extendida)'
-        // , 'Ruleta', 'BlackJack', 'Dados']
-        let menu: string[] = this.crearMenu();
+        // 'Tragamonedas (Modalidad Basica)',
+        // 'Tragamonedas (Modalidad Extendida)',
+        let menu = [
+            'Tragamonedas (Modalidad Clasica)',
+            'Tragamonedas (Modalidad Multilinea)',
+            'Poker',
+            'Ruleta']
+        // let menu: string[] = this.crearMenu();
         //---------------------------------------------------------------------
         console.log(`-`.repeat(80));
         // if (this.fondos === 0) console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
@@ -135,7 +189,6 @@ export class Casino {
         // const readlineSync = require('readline-sync');
         // let evento: number = readlineSync.keyInSelect(menu, '¿ a cual desea jugar ?') + 1;
         // console.log({ evento });
-
 
         // evento = Number(readlineSync.keyIn(
         //     `Juegos disponibles (ingrese el nro correspondiente): 

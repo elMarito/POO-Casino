@@ -1,43 +1,30 @@
 import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
-import { iJuegoDeCasino } from "./iJuegoDeCasino";
 import readlineSync from 'readline-sync';
 //=============================================================================
-export class Tragamonedas  extends JuegoDeCasino  {
-  // protected nombre: string;
-  // protected apuestaMinima: number;
-  // protected apuestaMaxima: number;
-  // protected dineroDisponible: number;
-  // protected dineroApostado: number;
-
+export class Tragamonedas extends JuegoDeCasino {
   // private carretes: string[];
-  private carretes: Carrete[];
-  // private emojis = {
-  //   happy: "😁", sad: "😢", fingerCross: "🤞", luck: "🍀", palanca: "📍",
-  //   chears: "🥂", award: "🏆", money: "💲", error: "❗", warn: "🔔",
-  // }
-  private SIMBOLOS: string[] = ["🍎", "🍊", "🍇", "🍓", "🍒", "🍋", "🍉", "🍌"]; //8
+  protected carretes: Carrete[];
+  protected SIMBOLOS: string[] = ["🍎", "🍊", "🍇", "🍓", "🍒", "🍋", "🍉", "🍌"]; //8
   // const SIMBOLOS: string[] =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
   // const SIMBOLOS: string[] = ["🍎", "🍊", "🍇", "🍓", "🍒", "🍋"]; // 6
   // const SIMBOLOS: string[] = [ "🥝", "🍈", "🍉", "🍌", "🍍", "🍏", "🍐", "🍑"];    // "coco", "mango
   // const SIMBOLOS: string[] = [ "🍅", "🍆", "🌽", "🌶", "🍄", "🥑", "🥒", "🥔", "🥕"];
   // console.log(SIMBOLOS);
   //---------------------------------------------------------------------------
-  constructor(apuestaMinima: number, apuestaMaxima: number) {
+  constructor(apuestaMinima: number, apuestaMaxima: number, CANTIDAD_CARRETES?: number) {
     super(apuestaMinima, apuestaMaxima);
-    this.nombre = "Tragamonedas (Tradicional)";
-    // this.apuestaMinima = apuestaMinima;
-    // this.apuestaMaxima = apuestaMaxima;
-    // this.dineroDisponible = 0;
-    // this.dineroApostado = 0;
-    this.emojis.palanca= "📍"; //agrego simbolo a la lista base de emojis.
-    const CANTIDAD_CARRETES: number = 3;
+    this.nombre = "Tragamonedas";
+
+    this.emojis.palanca = "📍"; //agrego simbolo a la lista base de emojis.
+    if (CANTIDAD_CARRETES === undefined) CANTIDAD_CARRETES = 3;
     // this.carretes = new Array(CANTIDAD_CARRETES).fill("."); //.map(() => this.generarSimboloAleatorio());
-    const RETRASO: number = 8000; 
+    const RETRASO: number = 8000;
     this.carretes = [];
     for (let i = 0; i < CANTIDAD_CARRETES; i++) {
       // this.carretes.push(new Carrete(i * RETRASO
-      this.carretes.push(new Carrete(this.getRandomIntInclusive(i * RETRASO, (i + 1) * RETRASO)
-        , 0, this.reordenar([...this.SIMBOLOS])))
+      this.carretes.push(
+        new Carrete(this.getRandomIntInclusive(i * RETRASO, (i + 1) * RETRASO)
+          , 0, this.reordenar([...this.SIMBOLOS])))
     }
 
     // this.carretes = this.carretes.map(() => this.generarSimboloAleatorio());
@@ -50,28 +37,28 @@ export class Tragamonedas  extends JuegoDeCasino  {
   // Metodos de la interfaz.---------------------------------------------------   
   public getNombre(): string { return this.nombre; }
   //---------------------------------------------------------------------------
-  public jugar(): void {
-    this.presentarJuego();
-    // this.inicializarJuego();
-    try {
-      this.solicitarFondos();
-      this.iniciarJuego();
-      // this.chequearResultado();
-      // this.pagarApuesta();
-      return;
-    } catch (error) {      // result = error.message; // error under useUnknownInCatchVariables 
-      console.clear();
-      if (error instanceof Error) {
-        console.log(error.message);
-      } else if (typeof error === "string") {
-        console.log(error);
-      }
-    }
-    finally {
-      console.log("Ud. Recibe: ", this.dineroDisponible);
-      this.dineroDisponible = 0;
-    }
-  }
+  // public jugar(): void {
+  //   this.presentarJuego();
+  //   // this.inicializarJuego();
+  //   try {
+  //     this.solicitarFondos();
+  //     this.iniciarJuego();
+  //     // this.chequearResultado();
+  //     // this.pagarApuesta();
+  //     return;
+  //   } catch (error) {      // result = error.message; // error under useUnknownInCatchVariables 
+  //     console.clear();
+  //     if (error instanceof Error) {
+  //       console.log(error.message);
+  //     } else if (typeof error === "string") {
+  //       console.log(error);
+  //     }
+  //   }
+  //   finally {
+  //     console.log("Ud. Recibe: ", this.dineroDisponible);
+  //     this.dineroDisponible = 0;
+  //   }
+  // }
   //---------------------------------------------------------------------------
   public presentarJuego(): void {
     const centrar = (str: string, length: number, char: string = ' ') =>
@@ -202,8 +189,8 @@ export class Tragamonedas  extends JuegoDeCasino  {
     this.carretes.forEach(carrete => carrete.resetearVelocidad());
     // this.carretes.forEach(carrete =>{carrete.setVelocidadInicial(0)})
     // girando....
-    let proceso:{ [key: string]: string } = { "-": "/", "/": "|", "|": `\\`, "\\": "-" };
-    let pp: string = proceso[ "-"];
+    let proceso: { [key: string]: string } = { "-": "/", "/": "|", "|": `\\`, "\\": "-" };
+    let pp: string = proceso["-"];
     // let proceso: { [key: string]: string } = { "(  ": " _ ", " _ ": "  )", "  )": " ¯ ", " ¯ ": "(  " };
     // let pp: string = proceso[ "(  "];
 

@@ -1,13 +1,14 @@
-import { iJuegoDeCasino } from "./iJuegoDeCasino";
+// import { iJuegoDeCasino } from "./iJuegoDeCasino";
 import readlineSync from 'readline-sync';
+import { Jugador } from "./jugador";
 //=============================================================================
 export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   protected nombre: string;
   protected apuestaMinima: number;
   protected apuestaMaxima: number;
-  protected dineroDisponible: number;
+  protected dineroDisponible: number; //esto deberia estar en el jugador
   protected dineroApostado: number;
-  protected emojis:{[key: string]: string};/*  = {
+  protected emojis: { [key: string]: string };/*  = {
     happy: "😁", sad: "😢", fingerCross: "🤞", luck: "🍀", money: "💲",
     chears: "🥂", award: "🏆", error: "❗", question: "❓", warn: "🔔"
   } //🎲♠♣♥♦🎴💎 */
@@ -16,7 +17,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
     this.nombre = "";
     this.apuestaMinima = apuestaMinima;
     this.apuestaMaxima = apuestaMaxima;
-    this.dineroDisponible = 0;
+    this.dineroDisponible = 0;//esto deberia estar en el jugador
     this.dineroApostado = 0;
     this.emojis = {
       happy: "😁", sad: "😢", fingerCross: "🤞", luck: "🍀", money: "💲",
@@ -31,12 +32,13 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   // public getDineroDisponible(): number { return this.dineroDisponible; }
   // public getDineroApostado(): number { return this.dineroApostado; }
   //---------------------------------------------------------------------------
+  // public jugar(jugador:Jugador): void {
   public jugar(): void {
-    this.presentarJuego();
+    this.presentarJuego(); //jugador:Jugador
     // this.inicializarJuego();
     try {
-      this.solicitarFondos();
-      this.iniciarJuego();
+      this.solicitarFondos(); //jugador:Jugador
+      this.iniciarJuego(); //jugador:Jugador
       // this.chequearResultado();
       // this.pagarApuesta();
       return;
@@ -57,7 +59,10 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   protected abstract presentarJuego(): void; //################################
   protected abstract iniciarJuego(): void; //##################################
   //---------------------------------------------------------------------------
+  // protected solicitarFondos(jugador: Jugador): void {
   protected solicitarFondos(): void {
+    // if (jugador.getFondos() > this.apuestaMinima) return
+
     let dinero: number = 0;
     do {
       console.log(`-`.repeat(80)); // 💲
@@ -70,6 +75,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
     } while (!this.apuestaEsValida(dinero));
     // si cancela la apuesta o si no dispone de dinero tirar error
     this.dineroDisponible = dinero;
+    // jugador.agregarFondos(dinero)
   }
   //---------------------------------------------------------------------------
   protected abstract solicitarCreditos(): number; //###########################
