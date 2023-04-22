@@ -10,16 +10,15 @@ import { TragamonedasMultilinea } from "./TragamonedasMultilinea";
 //-----------------------------------------------------------------------------
 console.clear();
 console.log(`-`.repeat(80)); //adult: "🔞",
-console.log(`Ud. esta a punto de ingresar al "Casino" 
-    pero antes debe responder la siguiente pregunta.`);
+console.log(`Si desea ingresar al Casino debe ser mayor de edad.\n`);
 
 let respuesta: string = readlineSync.question("Ingrese su edad: ");
-if (Number(respuesta) < 18) {
+const edad: number = Number(respuesta);
+// console.log(edad);
+if (isNaN(edad) || edad < 18) {
     console.log(`🔞 Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
+    // process.exit(0)  // para terminar el programa.
 } else {
-    console.log(` Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
-    const edad: number = Number(respuesta);
-
     respuesta = readlineSync.question("Ingrese su nombre: ")
     const nombre: string = respuesta;
     //-----------------------------------------------------------------------------

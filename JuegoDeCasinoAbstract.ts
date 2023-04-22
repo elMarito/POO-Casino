@@ -34,6 +34,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   //---------------------------------------------------------------------------
   // public jugar(jugador:Jugador): void {
   public jugar(): void {
+    console.clear();
     this.presentarJuego(); //jugador:Jugador
     // this.inicializarJuego();
     try {
@@ -51,7 +52,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
       }
     }
     finally {
-      console.log("Ud. Recibe: ", this.dineroDisponible);
+      console.log("Ud. Recibe: $", this.dineroDisponible);
       this.dineroDisponible = 0;
     }
   }
@@ -70,7 +71,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
        (Apuesta minima: ${this.formatoDinero(this.apuestaMinima)}, Maxima: ${this.formatoDinero(this.apuestaMaxima)}).
        (ENTER): para cancelar y abandonar el juego.`);
       dinero = Number(readlineSync.question("Fondos: "));
-      if (dinero === 0) throw new Error("Operacion cancelada. Ud. abandono el Juego.");
+      if (isNaN(dinero) || dinero === 0) throw new Error("Operacion cancelada. Ud. abandono el Juego.");
       // if (dinero > 0) apuestaEsValida(dinero);
     } while (!this.apuestaEsValida(dinero));
     // si cancela la apuesta o si no dispone de dinero tirar error
@@ -82,7 +83,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   // protected abstract chequearResultado(): void ; //############################
   //---------------------------------------------------------------------------
   protected pagarApuesta(ganancia: number): void {
-    console.log(this.emojis.happy, this.emojis.award, ` ¡FELICIDADES! Ganaste 🥂 💲 ${ganancia} `, this.emojis.money);
+    console.log(this.emojis.happy, this.emojis.award, ` ¡FELICIDADES! Ganaste 🥂 `, this.emojis.money, ganancia, this.emojis.money);
     this.dineroDisponible += ganancia;
   }
   protected descontarApuestaPerdida(): void {
@@ -104,9 +105,9 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
     if (max === undefined) max = this.apuestaMaxima;
     if (dinero >= this.apuestaMinima && dinero <= max) return true;
     // throw new Error("Operacion cancelada. Ud. abandono el Juego.");
-    console.log(this.emojis.error.repeat(80));
+    // console.log(this.emojis.error.repeat(40));
     console.error(this.emojis.error, "ERROR! Apuesta invalida! la apuesta ingresada esta fuera de los limites.");
-    console.log(this.emojis.error.repeat(80));
+    // console.log(this.emojis.error.repeat(40));
     //    console.log(`!`.repeat(80));
     return false;
   }
