@@ -2,21 +2,21 @@ import * as readlineSync from "readline-sync"; // formato typscrypt
 //=============================================================================
 import { Jugador } from "./jugador";
 import { Casino } from "./casino";
-// import { JuegoDeCasino } from "./juegoDeCasino";
 import { Poker } from "./poker";
 import { Ruleta } from "./ruleta";
 import { TragamonedasClasico } from "./TragamonedasClasico";
 import { TragamonedasMultilinea } from "./TragamonedasMultilinea";
+import { color } from './utiles';
 //-----------------------------------------------------------------------------
 console.clear();
-console.log(`-`.repeat(80)); //adult: "🔞",
+console.log(`-`.repeat(80));
 console.log(`Si desea ingresar al Casino debe ser mayor de edad.\n`);
 
 let respuesta: string = readlineSync.question("Ingrese su edad: ");
 const edad: number = Number(respuesta);
 // console.log(edad);
 if (isNaN(edad) || edad < 18) {
-    console.log(`🔞 Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
+    console.log(`${color.red}🔞 Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
     // process.exit(0)  // para terminar el programa.
 } else {
     respuesta = readlineSync.question("Ingrese su nombre: ")
@@ -40,20 +40,10 @@ if (isNaN(edad) || edad < 18) {
     casino.agregarJuego(new Poker())
     casino.agregarJuego(new Ruleta(5555,"ruleta",50,50000,1000,0))) */
 
-    // console.log(casino)
-    // console.table(casino)
     // jugador.jugar();
     casino.recibir(jugador);
     // jugador.ingresarACasino(casino);
 }
-
-//para jugar en el casino debe ser mayor de edad🔞. Por favor ingrese su edad:
-//-----------------------------------------------------------------------------
-// console.log(`Ud. esta a punto de ingresar al "Casino Argento"
-//     pero para hacerlo debe ser mayor de dad.`);
-// let edad: string = readlineSync.question("Ingrese su edad:");
-// if (Number(edad) >== 18) {
-//-----------------------------------------------------------------------------
 
 // respuesta = readlineSync.question("¿ Es Ud. mayor de edad ?: ");
 // let respuesta:boolean = readlineSync.keyInYN("¿ Es Ud. mayor de edad ?: ");

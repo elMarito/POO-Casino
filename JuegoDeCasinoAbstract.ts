@@ -1,4 +1,5 @@
-// import { iJuegoDeCasino } from "./iJuegoDeCasino";
+import { centrar } from './utiles';
+
 import readlineSync from 'readline-sync';
 import { Jugador } from "./jugador";
 //=============================================================================
@@ -8,10 +9,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   protected apuestaMaxima: number;
   protected dineroDisponible: number; //esto deberia estar en el jugador
   protected dineroApostado: number;
-  protected emojis: { [key: string]: string };/*  = {
-    happy: "😁", sad: "😢", fingerCross: "🤞", luck: "🍀", money: "💲",
-    chears: "🥂", award: "🏆", error: "❗", question: "❓", warn: "🔔"
-  } //🎲♠♣♥♦🎴💎 */
+  protected emojis: { [key: string]: string };
   //---------------------------------------------------------------------------
   constructor(apuestaMinima: number, apuestaMaxima: number) {
     this.nombre = "";
@@ -32,7 +30,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   // public getDineroDisponible(): number { return this.dineroDisponible; }
   // public getDineroApostado(): number { return this.dineroApostado; }
   //---------------------------------------------------------------------------
-  // public jugar(jugador:Jugador): void {
+  // public jugar(casino:Casino, jugador:Jugador): void {
   public jugar(): void {
     console.clear();
     this.presentarJuego(); //jugador:Jugador
@@ -50,8 +48,11 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
       } else if (typeof error === "string") {
         console.log(error);
       }
+      // en caso de error reintegrar la apuesta.
+      // if (this.dineroApostado > 0) this.jugador.cobrarApuesta(this.dineroApostado);
     }
     finally {
+      // console.log("Ud. Recibe: $", jugador.getFondos());
       console.log("Ud. Recibe: $", this.dineroDisponible);
       this.dineroDisponible = 0;
     }
@@ -66,7 +67,7 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
 
     let dinero: number = 0;
     do {
-      console.log(`-`.repeat(80)); // 💲
+      console.log(`-`.repeat(80));
       console.log(this.emojis.error, `Por favor ingrese la candidad de dinero para Jugar : 
        (Apuesta minima: ${this.formatoDinero(this.apuestaMinima)}, Maxima: ${this.formatoDinero(this.apuestaMaxima)}).
        (ENTER): para cancelar y abandonar el juego.`);
@@ -82,10 +83,13 @@ export abstract class JuegoDeCasino /* implements iJuegoDeCasino */ {
   protected abstract solicitarCreditos(): number; //###########################
   // protected abstract chequearResultado(): void ; //############################
   //---------------------------------------------------------------------------
+  // protected pagarApuesta(ganancia: number, jugador: Jugador): void {
   protected pagarApuesta(ganancia: number): void {
     console.log(this.emojis.happy, this.emojis.award, ` ¡FELICIDADES! Ganaste 🥂 `, this.emojis.money, ganancia, this.emojis.money);
+    // jugador.pagarApuesta(ganancia)<-esta mal
     this.dineroDisponible += ganancia;
   }
+  // protected descontarApuestaPerdida(jugador: Jugador): void {
   protected descontarApuestaPerdida(): void {
     console.log(this.emojis.sad, " Lo siento pero perdiste, inténtalo de nuevo.");
     // mensaje: 2 Mala Suerte!. Volver a intentarlo ?

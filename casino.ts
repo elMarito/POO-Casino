@@ -10,6 +10,7 @@ import { TragamonedasMultilinea } from './TragamonedasMultilinea';
 
 // import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
 import { Jugador } from "./jugador";
+import { color } from './utiles';
 //-----------------------------------------------------------------------------
 export class Casino {
     private nombre: string;
@@ -86,9 +87,10 @@ export class Casino {
     //-------------------------------------------------------------------------
     private chquearFondos(jugador: Jugador): void {
         // if (this.fondos === 0) console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
+        console.log(color.cyan);        
         if (jugador.getFondos() === 0) {
-            console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
-            console.log("si desea ingresarlos ahora presione si, de lo contrario le seran solicitados al ingresar a un juego.");
+            console.log("Ud. aun no dispone de fondos para jugar.");
+            console.log("Si desea ingresarlos ahora presione si, de lo contrario le seran solicitados al ingresar a un juego.");
             let respuesta = readlineSync.keyInYN("Desea ingresar fondos ahora?");
             if (respuesta) this.solicitarFondos(jugador)
         }
@@ -117,6 +119,7 @@ export class Casino {
     public recibir(jugador: Jugador): void {
         this.presentarCasino();
         this.chquearFondos(jugador);
+        console.log(color.reset);
         console.clear();
         console.log(`Bienvenido ${jugador.getNombre()}!`);
 
@@ -125,13 +128,15 @@ export class Casino {
             // jugador.getFondos()
             // if (this.fondos === 0) console.log("Ud. aun no dispone de fondos para jugar. Les seran solicitados al ingresar a un juego.");
             // else console.log(`Ud. disponde de $ ${this.fondos} para jugar o cobrar.`);
+            console.log(color.cyan);
             opcionMenu = this.elegirJuego();
+            console.log(color.reset);
             switch (opcionMenu) {
                 case 0: // (ENTER)
                     console.clear();
                     console.log("Adios. Gracias por jugar con nosotros!");
                     break;
-                // case 1: { this.tragamonedasClasico.jugar(jugador); break; }
+                // case 1: { this.tragamonedasClasico.jugar(this, jugador); break; }
                 case 1: this.tragamonedasClasico.jugar(); break;
                 case 2: this.tragamonedasMultilinea.jugar(); break;
                 case 3: this.poker.jugar(); break;
@@ -141,7 +146,9 @@ export class Casino {
                 //     break;
                 // }
                 default: {
+                    console.log(color.cyan);
                     console.log(`❗ Opcion incorrecta. vuelva a intentarlo.`);
+                    console.log(color.reset);
                     // let beep = require('beepbeep');
                     // beep(3, 500); // Beep!
                     // // beep([1000, 500, 2000])
@@ -158,13 +165,16 @@ export class Casino {
     private presentarCasino(): void {
         console.clear();
         // let text = "/*\n" + ascii_text_generator(`Bienvenido al casino "ROYALE"`, "2") + "\\n*/";
+        console.log(color.cyan);
         console.log(`=`.repeat(80));
         // console.log("Bienvenido al casino.....");
         console.log(ascii_text_generator(`   Bienvenidos a`, "1"));
         console.log(ascii_text_generator(this.nombre.split(" ").join("\\n"), "2"));
         console.log("\n\n", `-`.repeat(80));
         //        console.log(` "Jugar es perju......"`.padEnd(80)); // TODO ver como se centra.        
+        console.log(color.redBackGround);
         console.log("\n..................JUGAR ES PERJUDICIAL PARA LA SALUD...........\n\n");
+        console.log(color.reset);
         // console.log("Juegue con responsabilidad, si tiene problemas con el juego contacte a un profeesional.\n\n");
         // console.log("para comenzar a jugar ingrese su nombre:");
         // console.log("Ingrese el monto de dinero para hacer apuestas. (el monto minimo depende de la apuesta.)");
