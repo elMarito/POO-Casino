@@ -6,5 +6,13 @@
   },
   "devDependencies": {
     "@types/readline-sync": "^1.4.4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "se puede compilar todos los js?",
+    "dev": "tsc -w",
+    "devOpcion2": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "casino": "npm ./dist/index.js"
   }
 }

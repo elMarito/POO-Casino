@@ -1,43 +1,32 @@
 import { JuegoDeCasino } from "./JuegoDeCasinoAbstract";
-import { iJuegoDeCasino } from "./iJuegoDeCasino";
 import readlineSync from 'readline-sync';
+import { Jugador } from "./jugador";
 //=============================================================================
-export class Tragamonedas  extends JuegoDeCasino  {
-  // protected nombre: string;
-  // protected apuestaMinima: number;
-  // protected apuestaMaxima: number;
-  // protected dineroDisponible: number;
-  // protected dineroApostado: number;
-
+export class Tragamonedas extends JuegoDeCasino {
   // private carretes: string[];
-  private carretes: Carrete[];
-  // private emojis = {
-  //   happy: "😁", sad: "😢", fingerCross: "🤞", luck: "🍀", palanca: "📍",
-  //   chears: "🥂", award: "🏆", money: "💲", error: "❗", warn: "🔔",
-  // }
-  private SIMBOLOS: string[] = ["🍎", "🍊", "🍇", "🍓", "🍒", "🍋", "🍉", "🍌"]; //8
+  protected carretes: Carrete[];
+  protected SIMBOLOS: string[];
   // const SIMBOLOS: string[] =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
   // const SIMBOLOS: string[] = ["🍎", "🍊", "🍇", "🍓", "🍒", "🍋"]; // 6
   // const SIMBOLOS: string[] = [ "🥝", "🍈", "🍉", "🍌", "🍍", "🍏", "🍐", "🍑"];    // "coco", "mango
   // const SIMBOLOS: string[] = [ "🍅", "🍆", "🌽", "🌶", "🍄", "🥑", "🥒", "🥔", "🥕"];
   // console.log(SIMBOLOS);
   //---------------------------------------------------------------------------
-  constructor(apuestaMinima: number, apuestaMaxima: number) {
+  constructor(apuestaMinima: number, apuestaMaxima: number
+    , cantidadCarretesDefault3: number = 3
+    , simbolosDefault8frutas: string[] = ["🍎", "🍊", "🍇", "🍓", "🍒", "🍋", "🍉", "🍌"]) {
     super(apuestaMinima, apuestaMaxima);
-    this.nombre = "Tragamonedas (Tradicional)";
-    // this.apuestaMinima = apuestaMinima;
-    // this.apuestaMaxima = apuestaMaxima;
-    // this.dineroDisponible = 0;
-    // this.dineroApostado = 0;
-    this.emojis.palanca= "📍"; //agrego simbolo a la lista base de emojis.
-    const CANTIDAD_CARRETES: number = 3;
-    // this.carretes = new Array(CANTIDAD_CARRETES).fill("."); //.map(() => this.generarSimboloAleatorio());
-    const RETRASO: number = 8000; 
+    this.nombre = "Tragamonedas";
+    this.SIMBOLOS = simbolosDefault8frutas
+    this.emojis.palanca = "📍"; //agrego simbolo a la lista base de emojis.
+    // this.carretes = new Array(cantidadCarretesDefault3).fill("."); //.map(() => this.generarSimboloAleatorio());
+    const RETRASO: number = 4000;
     this.carretes = [];
-    for (let i = 0; i < CANTIDAD_CARRETES; i++) {
+    for (let i = 0; i < cantidadCarretesDefault3; i++) {
       // this.carretes.push(new Carrete(i * RETRASO
-      this.carretes.push(new Carrete(this.getRandomIntInclusive(i * RETRASO, (i + 1) * RETRASO)
-        , 0, this.reordenar([...this.SIMBOLOS])))
+      this.carretes.push(
+        new Carrete(this.getRandomIntInclusive(i * RETRASO, (i + 1) * RETRASO)
+          , 0, this.reordenar([...this.SIMBOLOS])))
     }
 
     // this.carretes = this.carretes.map(() => this.generarSimboloAleatorio());
@@ -50,42 +39,18 @@ export class Tragamonedas  extends JuegoDeCasino  {
   // Metodos de la interfaz.---------------------------------------------------   
   public getNombre(): string { return this.nombre; }
   //---------------------------------------------------------------------------
-  public jugar(): void {
-    this.presentarJuego();
-    // this.inicializarJuego();
-    try {
-      this.solicitarFondos();
-      this.iniciarJuego();
-      // this.chequearResultado();
-      // this.pagarApuesta();
-      return;
-    } catch (error) {      // result = error.message; // error under useUnknownInCatchVariables 
-      console.clear();
-      if (error instanceof Error) {
-        console.log(error.message);
-      } else if (typeof error === "string") {
-        console.log(error);
-      }
-    }
-    finally {
-      console.log("Ud. Recibe: ", this.dineroDisponible);
-      this.dineroDisponible = 0;
-    }
-  }
-  //---------------------------------------------------------------------------
   public presentarJuego(): void {
     const centrar = (str: string, length: number, char: string = ' ') =>
       str.padStart((str.length + length) / 2, char).padEnd(length, char);
-    console.clear();
     console.log(`=`.repeat(80));
     console.log(centrar(`Ud a elegido el juego.....${this.nombre.toLocaleUpperCase()}....`, 80));  // TODO cambiar tipografia
-    //    console.log(this.SIMBOLOS.join());
-    console.log(centrar((["🍎", "🍊", "🍇", "🍓", "🍒", "🍋", "🍉", "🍌"
-      , "🥝", "🍈", "🍍", "🍏", "🍐", "🍑", "🍅", "🍆"
-      , "🌽", "🌶", "🍄", "🥑", "🥒", "🥔", "🥕"]).join(), 80));
+    console.log(centrar(this.SIMBOLOS.join(), 80));
+    // console.log(centrar((["🍎", "🍊", "🍇", "🍓", "🍒", "🍋", "🍉", "🍌"
+    //   , "🥝", "🍈", "🍍", "🍏", "🍐", "🍑", "🍅", "🍆"
+    //   , "🌽", "🌶", "🍄", "🥑", "🥒", "🥔", "🥕"]).join(), 80));
 
     console.log(`-`.repeat(80));
-    // se podrian poner las reglas en un TXT.         TODO
+    // se podrian poner las reglas en un TXT.         TO DO
     console.log(` Reglas: 
     para poder jugar Ud. debe ingresar un candidad de dinero de la cual dispondra
     para hacer las apuestas. Una vez acreditado el dinero, se le solicitara que
@@ -96,13 +61,15 @@ export class Tragamonedas  extends JuegoDeCasino  {
     console.log(` Opciones de Apuestas: 
     Probabilidades: 0 simbolos iguales: pierde la apuesta.
     Probabilidades: 2 simbolos iguales: salva la apuesta.
-    Probabilidades: 3 simbolos iguales: gana la apuesta x 3.`); // TODO  
+    Probabilidades: 3 simbolos iguales: gana la apuesta x 3.`);
     console.log(`-`.repeat(80));
     //    console.log(` Las probabiliddes de ganar son     ${this.getProbabilidades()} a 1.`); // TODO  
     console.log(centrar(` Puede ganar hasta 💲💲💲     ${this.formatoDinero(this.apuestaMaxima * 3)}    💲💲💲`, 80)); // TODO  
     console.log(`=`.repeat(80)); 1
-    console.log(` Uds. Dispone de ${this.formatoDinero(this.dineroDisponible)} para apostar.`);
-    console.log(`-`.repeat(80));
+
+    // jugador.getFondos()
+    // console.log(` Uds. Dispone de ${this.formatoDinero(this.dineroDisponible)} para apostar.`);
+    // console.log(`-`.repeat(80));
   }
   //---------------------------------------------------------------------------
   // private inicializarJuego(): void {
@@ -117,23 +84,6 @@ export class Tragamonedas  extends JuegoDeCasino  {
   //   // console.log()
   // }
   //---------------------------------------------------------------------------
-  //---------------------------------------------------------------------------
-  // private solicitarFondos(): void {
-  //   let dinero: number = 0;
-  //   do {
-  //     console.log(`-`.repeat(80)); // 💲
-  //     console.log(`❗ Por favor ingrese la candidad de dinero para Jugar : 
-  //     (Apuesta minima: ${this.formatoDinero(this.apuestaMinima)}, Maxima: ${this.formatoDinero(this.apuestaMaxima)}).
-  //     (ENTER): para cancelar y abandonar el juego.`);
-  //     dinero = Number(readlineSync.question("Fondos: "));
-  //     if (dinero === 0) throw new Error("Operacion cancelada. Ud. abandono el Juego.");
-  //     // if (dinero > 0) apuestaEsValida(dinero);
-  //   } while (!this.apuestaEsValida(dinero));
-  //   // si cancela la apuesta o si no dispone de dinero tirar error
-  //   this.dineroDisponible = dinero;
-  // }
-  //---------------------------------------------------------------------------
-  //---------------------------------------------------------------------------
   // la puse public porque esta protected en JuegoDeCasino sino seria private
   public iniciarJuego(): void {
     // let continuar: boolean = true;
@@ -145,6 +95,7 @@ export class Tragamonedas  extends JuegoDeCasino  {
       dinero = this.solicitarCreditos();//this.emojis.warn===🔔
       if (dinero === 0) /* continuar = false; */ throw new Error(`Operacion cancelada. Ud. abandono el Juego.`);
       if (this.apuestaEsValida(dinero, this.dineroDisponible)) {
+        // this.dineroApostado = jugador.apostar(dinero)
         this.dineroApostado = dinero;
         this.accionarPalanca();
         this.chequearResultado();
@@ -159,14 +110,14 @@ export class Tragamonedas  extends JuegoDeCasino  {
   //---------------------------------------------------------------------------
   public solicitarCreditos(): number {
     console.log(`-`.repeat(80));
-    console.log(`Ud. dispone de ${this.formatoDinero(this.dineroDisponible)} para apostar. 
-    Ingrese la cantidad destinada a este giro.
+    // console.log(`Ud. dispone de ${this.formatoDinero(this.dineroDisponible)} para apostar. 
+    console.log(`Ud. dispone de ${this.emojis.money}`, this.dineroDisponible, `para apostar.`);
+    // console.log(`Ud. dispone de ${this.emojis.money}`, jugador.getFondos(), `para apostar.`);
+    console.log(`Ingrese la cantidad destinada a este giro.
     Al presionar (ENTER) se accionara ${this.emojis.palanca} el tragamonedas.
     (si no ingresa un monto al presionar (ENTER) abandonara el juego.)`);
     const dinero: number = Number(readlineSync.question("Apuesta: "));
-    // TODO               verificar si pone letras
-
-    return dinero;
+    return isNaN(dinero) ? 0 : dinero;
   }
   //---------------------------------------------------------------------------
   //---------------------------------------------------------------------------
@@ -202,8 +153,8 @@ export class Tragamonedas  extends JuegoDeCasino  {
     this.carretes.forEach(carrete => carrete.resetearVelocidad());
     // this.carretes.forEach(carrete =>{carrete.setVelocidadInicial(0)})
     // girando....
-    let proceso:{ [key: string]: string } = { "-": "/", "/": "|", "|": `\\`, "\\": "-" };
-    let pp: string = proceso[ "-"];
+    let proceso: { [key: string]: string } = { "-": "/", "/": "|", "|": `\\`, "\\": "-" };
+    let pp: string = proceso["-"];
     // let proceso: { [key: string]: string } = { "(  ": " _ ", " _ ": "  )", "  )": " ¯ ", " ¯ ": "(  " };
     // let pp: string = proceso[ "(  "];
 
@@ -220,19 +171,19 @@ export class Tragamonedas  extends JuegoDeCasino  {
         // process.stdout.write(`\r 1:[ ${rod.verSimbolo()} ${rod.getRetraso()} ${rod.getVelocidad()} ]---`);
         // temporal += (`${i.toString().padStart(4)}:[ ${rod.verSimbolo()} ${rod.getRetraso()} ${rod.getVelocidad().toString().padStart(6)} ]---`);
       })
+      pp = proceso[pp];
       if (index === velocidad + 1) {
-        pp = proceso[pp];
         velocidad = velocidad + index;
       }
       // process.stdout.write(`\r ${temporal} ---`);
-      this.monstrarSimbolos(pp);      // this.monstrarSimbolos(index.toString());
+      this.monstrarSimbolos(pp + ` `.repeat(40));      // this.monstrarSimbolos(index.toString());
     }
     this.monstrarSimbolos(" --->  ");
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // this.carretes.forEach(carrete => carrete = this.generarSimboloAleatorio());
   }
   //---------------------------------------------------------------------------
-  private chequearResultado(): void {
+  protected chequearResultado(): void {
     // //quitar duplicados de un array
     // const unique = new Set(this.carretes.map(carr => carr.verSimbolo()))
     // switch (unique.size) {
