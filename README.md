@@ -21,7 +21,8 @@ npm i ts-node // para no crear *.JS
 - Patronelli Mario
 - Reyes Javier
 
-![Imagen de Ejemplo](https://picsum.photos/id/0/5000/3333)
+<!-- https://stackedit.io/app# -->
+![Imagen de Ejemplo](https://raw.githubusercontent.com/elMarito/POO-Casino/desarrollo/UML.drawio.png)
 
 ### UML:
 #### Diagrama de Clases:
