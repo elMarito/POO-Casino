@@ -1,74 +1,92 @@
 # POO-Final-2do-Cuatrimestre
 
-### paquetes utilizados:
-[ascii-text-generator](https://www.npmjs.com/package/ascii-text-generator)
-
-en Node.js :
-```shell
-npm i readline-sync
-npm i @types/node
-npm i ascii-text-generator
-npm i beepbeep
-
-npm i ts-node // para no crear *.JS
-
-```
-
-
 ### Grupo de Trabajo:
 - Alvarez Torriglia Facundo
 - Escobar Mariano
 - Patronelli Mario
 - Reyes Javier
 
-<!-- https://stackedit.io/app# -->
-![Imagen de Ejemplo](https://raw.githubusercontent.com/elMarito/POO-Casino/desarrollo/UML.drawio.png)
+### paquetes utilizados:
+en Node.js :
+```shell
+npm i [readline-sync]
+npm i [@types/node]
+npm i [ascii-text-generator]
+```
+<!-- 
+npm i beepbeep
+npm i ts-node // para no crear *.JS
+-->
+- [readline-sync](https://www.npmjs.com/package/readline-sync)
+- [@types/node](https://www.npmjs.com/package/@types/node)
+- [ascii-text-generator](https://www.npmjs.com/package/ascii-text-generator)
+
+### Como ejecutarlo ?
+en Node.js:
+para ejecutar el programa, primero instalar las dependencias, despues ejecutar:
+```shell
+git clone https://github.com/elMarito/POO-Casino.git
+cd POO-CASINO
+npm install
+node dist/index.js
+
+```
 
 ### UML:
 #### Diagrama de Clases:
+
+![Imagen de Ejemplo](https://raw.githubusercontent.com/elMarito/POO-Casino/desarrollo/UML.drawio.png)
+
 ```mermaid
 classDiagram
 
-%%Casino "0..n" o-- "1" JuegoDeCasino
+JuegoDeCasino <|-- Tragamonedas : hereda
+JuegoDeCasino <|-- Poker : hereda
+JuegoDeCasino <|-- Ruleta : hereda
 
-%% JuegoDeCasino <|-- Poker: herencia
-%% JuegoDeCasino <|-- Ruleta: herencia
-Poker "1" --o "1" Casino: composision debil
-Ruleta "1" --o "1" Casino: composision debil
-TragamonedasClasico "1" --o "1" Casino: composision debil
-TragamonedasMultilinea "1" --o "1" Casino: composision debil
-
-JuegoDeCasino<|-- Tragamonedas : hereda
-JuegoDeCasino<|-- Poker : hereda
-JuegoDeCasino<|-- Ruleta : hereda
+Poker "1" --* "1" Casino: composición fuerte
+Ruleta "1" --* "1" Casino: composición fuerte
+TragamonedasClasico "1" --* "1" Casino: composición fuerte
+TragamonedasMultilinea "1" --* "1" Casino: composición fuerte
 
 Tragamonedas <|-- TragamonedasClasico : hereda
 Tragamonedas <|-- TragamonedasMultilinea : hereda
-%%--------------------------------------------
+
+Tragamonedas *-- Carrete : composición fuerte
+
 class Casino {
     - nombre: string
     - direccion: string
     - localidad: string
-    + juego: JuegoDeCasino[]
-
-    + jugar(n: number):void
-    + cargarCredito():void
+    - poker: Poker
+    - ruleta: Ruleta
+    - tragamonedasClasico: TragamonedasClasico
+    - tragamonedasMultilinea: TragamonedasMultilinea
+    
+    + recibir(): void
+    - chequearFondos(): void
+    - solicitarFondos(): void
+    - presentarCasino(): void
+    - elegirJuego(): number
 }
+%%--------------------------------------------
+class Carrete {
+- simbolos: string[]
+- posicion: number
+- velocidad: number
 
-
-    %% presentarJuego(): void
-    %% inicializarJuego(): void
-    %% solicitarApuesta(): void
-    %% iniciarJuego(): void
-    %% chequearResultado(): void
-    %% pagarApuesta(ganancia:number): void
-    %% descontarApuestaPerdida(): void
-    %% azar(): void
-
++ verSimbolo(): string
++ getRetraso(): number
++ getVelocidad(): number
++ desacelerar(): number
++ resetearVelocidad(): void
++ girar(): void
+}
 %%--------------------------------------------
 class Tragamonedas {
     <<Super>>
     - carretes: string[]
+    - simbolos: string
 
     + jugar(): void
     + presentarJuego(): void
@@ -99,61 +117,57 @@ class TragamonedasMultilinea {
 }
 %%--------------------------------------------
 class Poker {
-    - cartas: string[]
-
-    + jugar():void
-    - presentarJuego(): void
-    + repartirCartas():void
+    + presentarJuego(): void
+    + solicitarCreditos(): void
+    + iniciarJuego(): void
 }
 %%--------------------------------------------
 class Ruleta {
-    - numerosSalidos: number[]
-    + iniciarGiro():void
-    + detenerGiro():void
+    + presentarJuego(): void
+    + solicitarCreditos(): void
+    + iniciarJuego(): void
 }
 %%--------------------------------------------
-<<Super>> JuegoDeCasino
+<<Abstract>> JuegoDeCasino
 class JuegoDeCasino {
     - nombre: string
     - apuestaMinima: number
     - apuestaMaxima: number
     - dineroDisponible: number //fondos
     - dineroApostado: number
-
+    
     + getNombre(): string
     + jugar(): void
-    # presentarJuego(): void
-    # iniciarJuego(): void
-    %% inicializarJuego(): void
+    # presentarJuego()* void
+    # iniciarJuego()* void
     # solicitarFondos(): void
-    # solicitarCreditos(): void
-    - chequearResultado(): void
-    # pagarApuesta(ganancia:number): void
+    # solicitarCreditos()* number
+    # pagarApuesta(): void
     # descontarApuestaPerdida(): void
-    - azar(): void
+    # apuestaEsValida(): boolean
 }
 %%--------------------------------------------
-class Jugador{
+class Jugador {
     - nombre: string
     - edad: number
     - fondos: number
 
-    + getNombre(): string
++ getNombre(): string
     + getFondos(): number
     + getEdad(): number
     + agregarFondos(dinero: number): void
     + apostar(dinero: number): void
 }
+%%--------------------------------------------
+link JuegoDeCasino "https://github.com/elMarito/POO-Casino/blob/main/src/JuegoDeCasinoAbstract.ts" "JuegoDeCasinoAbstract.ts"
+link Tragamonedas "https://github.com/elMarito/POO-Casino/blob/main/src/tragamonedas.ts" "tragamonedas.ts"
+link Carrete "https://github.com/elMarito/POO-Casino/blob/main/src/tragamonedas.ts" "tragamonedas.ts"
+link Poker "https://github.com/elMarito/POO-Casino/blob/main/src/poker.ts" "poker.ts"
+link Ruleta "https://github.com/elMarito/POO-Casino/blob/main/src/ruleta.ts" "ruleta.ts"
+link Casino "https://github.com/elMarito/POO-Casino/blob/main/src/casino.ts" "casino.ts"
+link TragamonedasClasico "https://github.com/elMarito/POO-Casino/blob/main/src/TragamonedasClasico.ts" "TragamonedasClasico.ts"
+link TragamonedasMultilinea "https://github.com/elMarito/POO-Casino/blob/main/src/TragamonedasMultilinea.ts" "TragamonedasMultilinea.ts"
+link Jugador "https://github.com/elMarito/POO-Casino/blob/main/src/jugador.ts" "jugador.ts"
 ```
 
-#### Como ejecutarlo ?
-en Node.js:
-
-para ejecutar el programa, primero instalar las dependencias, despues ejecutar:
-```shell
-git clone https://github.com/elMarito/POO-Casino.git
-cd POO-CASINO
-npm install
-node dist/index.js
-
-```
+<!--PARA EDITAR MARKDOWN FILES:  https://stackedit.io/app# -->
