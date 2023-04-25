@@ -30,16 +30,12 @@ classDiagram
 
 %%Casino "0..n" o-- "1" JuegoDeCasino
 
-%% Casino "n" o-- "1" iJuego : composision debil
-%%iJuego "1" --o "n" Casino: composision debil
-%% JuegoDeCasino <|-- BlackJack : herencia
+%% JuegoDeCasino <|-- Poker: herencia
 %% JuegoDeCasino <|-- Ruleta: herencia
 Poker "1" --o "1" Casino: composision debil
 Ruleta "1" --o "1" Casino: composision debil
 TragamonedasClasico "1" --o "1" Casino: composision debil
 TragamonedasMultilinea "1" --o "1" Casino: composision debil
-
-%%iJuego <|-- JuegoDeCasino : implements
 
 JuegoDeCasino<|-- Tragamonedas : hereda
 JuegoDeCasino<|-- Poker : hereda
@@ -47,7 +43,7 @@ JuegoDeCasino<|-- Ruleta : hereda
 
 Tragamonedas <|-- TragamonedasClasico : hereda
 Tragamonedas <|-- TragamonedasMultilinea : hereda
-
+%%--------------------------------------------
 class Casino {
     - nombre: string
     - direccion: string
@@ -58,15 +54,7 @@ class Casino {
     + cargarCredito():void
 }
 
-class iJuego {
-<<interface>> 
-    apuestaMinima: number
-    apuestaMaxima: number
-    dineroDisponible: number
-    dineroApostado: number
 
-    jugar(): void
-}
     %% presentarJuego(): void
     %% inicializarJuego(): void
     %% solicitarApuesta(): void
@@ -76,11 +64,9 @@ class iJuego {
     %% descontarApuestaPerdida(): void
     %% azar(): void
 
-
-%% class Tragamonedas["Abstract Tragamonedas"]
-%%<<Super>> Tragamonedas
+%%--------------------------------------------
 class Tragamonedas {
-    <<Abstract>>
+    <<Super>>
     - carretes: string[]
 
     + jugar(): void
@@ -92,7 +78,25 @@ class Tragamonedas {
     + pagarApuesta(ganancia:number): void
     + descontarApuestaPerdida(): void
 }
+%%--------------------------------------------
+class TragamonedasClasico {
+  - simbolosYapa: string[];
 
+  + presentarJuego(): void 
+  # chequearResultado(): void
+  # yapa(simbolo: string): number
+}
+%%--------------------------------------------
+class TragamonedasMultilinea {
+  - comodines: [string, string, number][]
+
+  + presentarJuego(): void
+  - monstrarSimbolos2(proceso: string, girando: string)
+  + iniciarJuego(): void
+  # chequearResultado(): void
+  - addComodines(resultados: [string, number][]): number
+}
+%%--------------------------------------------
 class Poker {
     - cartas: string[]
 
@@ -100,12 +104,13 @@ class Poker {
     - presentarJuego(): void
     + repartirCartas():void
 }
+%%--------------------------------------------
 class Ruleta {
     - numerosSalidos: number[]
     + iniciarGiro():void
     + detenerGiro():void
 }
-
+%%--------------------------------------------
 <<Super>> JuegoDeCasino
 class JuegoDeCasino {
     - nombre: string
@@ -126,6 +131,18 @@ class JuegoDeCasino {
     # descontarApuestaPerdida(): void
     - azar(): void
 }
+%%--------------------------------------------
+class Jugador{
+    - nombre: string
+    - edad: number
+    - fondos: number
+
+    + getNombre(): string
+    + getFondos(): number
+    + getEdad(): number
+    + agregarFondos(dinero: number): void
+    + apostar(dinero: number): void
+}
 ```
 
 #### Como ejecutarlo ?
@@ -136,7 +153,6 @@ para ejecutar el programa, primero instalar las dependencias, despues ejecutar:
 git clone https://github.com/elMarito/POO-Casino.git
 cd POO-CASINO
 npm install
-npm index.ts
-npm run casino
+node dist/index.js
 
 ```
