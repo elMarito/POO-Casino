@@ -41,7 +41,7 @@ export class TragamonedasMultilinea extends Tragamonedas {
       console.log(`Si se repite: ${como[0]} ${como[1]} `)
     )
     console.log(`-`.repeat(80));
-    console.log(` Las probabiliddes de ganar son 5 a 1.`); // TO DO  
+    console.log(` Las probabiliddes de ganar son 10.000.000 a 1.`); // TO DO  
     console.log(centrar(` Puede ganar hasta 💲💲💲     ${formatoDinero(this.apuestaMaxima * 3)}    💲💲💲`, 80)); // TODO  
     console.log(`=`.repeat(80)); 1
     console.log(` Uds. Dispone de ${formatoDinero(this.dineroDisponible)} para apostar.`);

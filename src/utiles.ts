@@ -22,15 +22,7 @@ export function formatoDinero(dinero: number): string {
  // return new Intl.NumberFormat("es-AR", { currency: 'ARS', style: "currency", maximumFractionDigits: 2 }).format(dinero);
 }
 //---------------------------------------------------------------------------
-// static getIcon(x:emojis):string{
-//     return this.emojis
-// }
-//---------------------------------------------------------------------------
 export function getRandomIntInclusive(min: number, max: number): number {
     min = Math.ceil(min);        // max = Math.floor(max);
     return Math.floor(Math.random() * (Math.floor(max) - min + 1) + min);
 }
-// let emooo1: string = util.centrar("hola", 10);
-// let emooo2: string = util.formatoDinero(3333);
-// let emooo3: number = util.getRandomIntInclusive(1, 10);
-// let emooo4: string = util.emojis.adult;

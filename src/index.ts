@@ -14,7 +14,7 @@ console.log(`Si desea ingresar al Casino debe ser mayor de edad.\n`);
 
 let respuesta: string = readlineSync.question("Ingrese su edad: ");
 const edad: number = Number(respuesta);
-// console.log(edad);
+
 if (isNaN(edad) || edad < 18) {
     console.log(`${color.red}${emojis.edad} Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
     // process.exit(0)  // para terminar el programa.
@@ -31,31 +31,5 @@ if (isNaN(edad) || edad < 18) {
         new Poker(),
         new Ruleta())
 
-    /* ,[new TragamonedasClasico(100, 10000, 555555)]
-    ,[new TragamonedasMultilinea(100, 10000)]
-    ,[new Poker()]
-    ,[new Ruleta(5555,"ruleta",50,50000,1000,0)])
-    casino.agregarJuego(new TragamonedasClasico(100, 10000, 555555))
-    casino.agregarJuego(new TragamonedasMultilinea(100, 10000))
-    casino.agregarJuego(new Poker())
-    casino.agregarJuego(new Ruleta(5555,"ruleta",50,50000,1000,0))) */
-
-    // jugador.jugar();
     casino.recibir(jugador);
-    // jugador.ingresarACasino(casino);
 }
-
-// respuesta = readlineSync.question("¿ Es Ud. mayor de edad ?: ");
-// let respuesta:boolean = readlineSync.keyInYN("¿ Es Ud. mayor de edad ?: ");
-// if (readlineSync.keyInYN("Es Ud. mayor de edad ?: ", { guide: true })) {
-//     //    , { trueValue: ['si', 's'], falseValue: ['no', 'n'], guide: true })) {
-//     // 'Y' key was pressed.
-//     //ingrese su nombre:
-//     console.clear();
-//     casino.Jugar();
-// } else {
-//     // Another key was pressed.
-//     console.clear();
-//     console.log(`🔞 Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
-// }
-//-----------------------------------------------------------------------------
