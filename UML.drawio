@@ -1,174 +1,184 @@
-<mxfile host="app.diagrams.net" modified="2023-04-25T02:05:55.387Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" version="21.2.1" etag="JuJ93qHKmhXxgAmawKiq" type="device">
-  <diagram name="Page-1" id="6133507b-19e7-1e82-6fc7-422aa6c4b21f">
-    <mxGraphModel dx="1477" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <object label="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;Abtracta&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;JuegoDeCasinoAbstrac&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# nombre: string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# apuestaMinima: number&lt;br&gt;# apuestaMaxima: number&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# dineroDisponible: number&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# dineroApostado: number&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# emojis : string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getNombre(): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ jugar(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# presentarJuego(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# inicializarJuego(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# solicitarFondos (): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# solicitarCreditos(): number&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# pagarApuesta(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# descontarApuestaPerdida():void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# apuestaEsValida(): boolean&lt;/p&gt;" apuestaMinima="number" apuestaMaxima="number" dineroDisponible="number" dineroApostado="number" id="b94bc138ca980ef-1">
-          <mxCell style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
-            <mxGeometry x="605" y="520" width="200" height="280" as="geometry" />
-          </mxCell>
-        </object>
-        <mxCell id="11" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="730" y="300" width="320" height="190" as="geometry" />
-        </mxCell>
-        <mxCell id="8" value="TragamonedasMultilinea" style="rounded=0;whiteSpace=wrap;html=1;" parent="11" vertex="1">
-          <mxGeometry width="320" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="9" value="- comodines: [string, string, (x: number) =&gt; number][]" style="whiteSpace=wrap;html=1;" parent="11" vertex="1">
-          <mxGeometry y="40" width="320" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="10" value="&lt;div&gt;&amp;nbsp;+ presentarJuego(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; - monstrarSimbolos2(proceso: string, girando: string)&lt;/div&gt;&lt;div&gt;&amp;nbsp; + iniciarJuego(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; # chequearResultado(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; - addComodines(resultados: [string, number][]): number&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="11" vertex="1">
-          <mxGeometry y="90" width="320" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="16" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="240" y="300" width="160" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="19" value="" style="group" parent="16" vertex="1" connectable="0">
-          <mxGeometry width="160" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="12" value="Ruleta" style="rounded=0;whiteSpace=wrap;html=1;" parent="19" vertex="1">
-          <mxGeometry width="160" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="13" value="+ presentarJuego(): void&lt;br&gt;+solicitarCredito():number&lt;br&gt;+iniciarJuego(): void" style="whiteSpace=wrap;html=1;" parent="19" vertex="1">
-          <mxGeometry y="30" width="160" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="18" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="40" y="300" width="160" height="97.5" as="geometry" />
-        </mxCell>
-        <mxCell id="14" value="Poker" style="rounded=0;whiteSpace=wrap;html=1;" parent="18" vertex="1">
-          <mxGeometry width="160" height="35.45454545454545" as="geometry" />
-        </mxCell>
-        <mxCell id="17" value="+ presentarJuego(): void&lt;br&gt;+solicitarCredito():number&lt;br&gt;+iniciarJuego(): void" style="whiteSpace=wrap;html=1;" parent="18" vertex="1">
-          <mxGeometry y="35.45454545454545" width="160" height="62.04545454545455" as="geometry" />
-        </mxCell>
-        <mxCell id="20" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="460" y="300" width="235" height="159" as="geometry" />
-        </mxCell>
-        <mxCell id="5" value="TragamonedasClasico" style="rounded=0;whiteSpace=wrap;html=1;" parent="20" vertex="1">
-          <mxGeometry width="235" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="6" value="- simbolosYapa: string[];" style="whiteSpace=wrap;html=1;" parent="20" vertex="1">
-          <mxGeometry y="40" width="235" height="39" as="geometry" />
-        </mxCell>
-        <mxCell id="7" value="&lt;div&gt;+ getNombre(): string&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; + getFondos(): number&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; + getEdad(): number&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; + agregarFondos(dinero: number): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; + apostar(dinero: number): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="20" vertex="1">
-          <mxGeometry y="79" width="235" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="22" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="900" y="60" width="160" height="210" as="geometry" />
-        </mxCell>
-        <mxCell id="2" value="Carrete" style="html=1;" parent="22" vertex="1">
-          <mxGeometry width="160" height="35" as="geometry" />
-        </mxCell>
-        <mxCell id="3" value="+verSimbolo():string&lt;br&gt;+getRetraso(): number&lt;br&gt;+getVolocidad(): number&lt;br&gt;+desacelerar(): number&lt;br&gt;+ resetearVelocidad():void&lt;br&gt;+girar(): void&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="22" vertex="1">
-          <mxGeometry y="95" width="160" height="115" as="geometry" />
-        </mxCell>
-        <mxCell id="21" value="- simbolos: string [ ]&lt;br&gt;- posicion: number&lt;br&gt;- velocidad: number" style="rounded=0;whiteSpace=wrap;html=1;" parent="22" vertex="1">
-          <mxGeometry y="35" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="27" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="40" y="20" width="290" height="220" as="geometry" />
-        </mxCell>
-        <mxCell id="23" value="Casino" style="rounded=0;whiteSpace=wrap;html=1;" parent="27" vertex="1">
-          <mxGeometry width="290" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="24" value="&lt;span style=&quot;text-align: left;&quot;&gt;- nombre: string&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- tragamonedasClasico: TragamonedasClasico&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- tragamonedasMultilinea: TragamonedasMultilinea&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- poker: Poker&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- ruleta: Ruleta&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="27" vertex="1">
-          <mxGeometry y="40" width="290" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="25" value="&lt;span style=&quot;text-align: left;&quot;&gt;- chequearFondos(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- solicitarFondos(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;+ recibir(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- presentarCasino(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- elegirJuego(): number&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="27" vertex="1">
-          <mxGeometry y="130" width="290" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="31" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="620" y="40" width="170" height="210" as="geometry" />
-        </mxCell>
-        <mxCell id="28" value="Tragamonedas" style="rounded=0;whiteSpace=wrap;html=1;" parent="31" vertex="1">
-          <mxGeometry width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="29" value="&lt;span style=&quot;text-align: left;&quot;&gt;# carretes: Carretes&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;# simbolos: string&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="31" vertex="1">
-          <mxGeometry y="30" width="170" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="30" value="&lt;span style=&quot;text-align: left;&quot;&gt;+ getNombre(): string&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;+ presentarJuego(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;+ iniciarJuego(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;+ solicitarcredito(): number&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- mostrarSimbolos (): string&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- accionarPalanca(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;# chequearResultado(): void&lt;/span&gt;&lt;br style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;- reordenar(): string&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="31" vertex="1">
-          <mxGeometry y="80" width="170" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="35" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="60" y="589.5" width="150" height="170" as="geometry" />
-        </mxCell>
-        <mxCell id="32" value="Jugador" style="rounded=0;whiteSpace=wrap;html=1;" parent="35" vertex="1">
-          <mxGeometry width="150" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="33" value="- nombre: string&lt;br&gt;- edad: number&lt;br&gt;- fondos: number" style="whiteSpace=wrap;html=1;" parent="35" vertex="1">
-          <mxGeometry y="30" width="150" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="34" value="+ getNombre(): string&lt;br&gt;+ getFondos(): number&lt;br&gt;+ getEdad(): number&lt;br&gt;+ agregarFondos(): void&lt;br&gt;+ apostar(): void" style="whiteSpace=wrap;html=1;" parent="35" vertex="1">
-          <mxGeometry y="90" width="150" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="37" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1" target="30" source="8">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="469.5" y="620" as="sourcePoint" />
-            <mxPoint x="520" y="540" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="38" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1" target="30" source="5">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="149.5" y="635.5" as="sourcePoint" />
-            <mxPoint x="240" y="510" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="39" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" edge="1" target="29" source="2">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="200" y="260" as="sourcePoint" />
-            <mxPoint x="300" y="330" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="41" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" parent="1" edge="1" target="b94bc138ca980ef-1" source="30">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="859.5" y="411.5" as="sourcePoint" />
-            <mxPoint x="860" y="320" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="45" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1" target="25" source="14">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="740" y="712.5" as="sourcePoint" />
-            <mxPoint x="740" y="650" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="46" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" edge="1" target="25" source="12">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="960" y="711.25" as="sourcePoint" />
-            <mxPoint x="960" y="648.75" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="47" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" edge="1" target="25" source="5">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="420" y="444.5" as="sourcePoint" />
-            <mxPoint x="700" y="445" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="-8ZN7k2oq9kdG_u1vnV1-51" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" edge="1" parent="1" source="8" target="25">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="525" y="310" as="sourcePoint" />
-            <mxPoint x="330" y="140" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="-8ZN7k2oq9kdG_u1vnV1-52" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" edge="1" parent="1" source="13" target="b94bc138ca980ef-1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="839" y="123.75" as="sourcePoint" />
-            <mxPoint x="400" y="574" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="-8ZN7k2oq9kdG_u1vnV1-54" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="17" target="b94bc138ca980ef-1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="343" y="410" as="sourcePoint" />
-            <mxPoint x="410" y="583.75" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="6133507b-19e7-1e82-6fc7-422aa6c4b21f">
+        <mxGraphModel dx="1159" dy="514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="11" value="" style="group;fillColor=default;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="730" y="300" width="310" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="TragamonedasMultilinea" style="rounded=0;whiteSpace=wrap;html=1;" parent="11" vertex="1">
+                    <mxGeometry width="310" height="35.78947368421052" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="- comodines: [string, string, (x: number) =&amp;gt; number][]" style="whiteSpace=wrap;html=1;align=left;" parent="11" vertex="1">
+                    <mxGeometry y="35.78947368421052" width="310" height="44.73684210526315" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;div&gt;&amp;nbsp;+ presentarJuego(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; - monstrarSimbolos2(proceso: string, girando: string)&lt;/div&gt;&lt;div&gt;&amp;nbsp; + iniciarJuego(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; # chequearResultado(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; - addComodines(resultados: [string, number][]): number&lt;/div&gt;" style="whiteSpace=wrap;html=1;align=left;" parent="11" vertex="1">
+                    <mxGeometry y="80.52631578947367" width="310" height="89.4736842105263" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="240" y="300" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="group" parent="16" vertex="1" connectable="0">
+                    <mxGeometry width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Ruleta" style="rounded=0;whiteSpace=wrap;html=1;" parent="19" vertex="1">
+                    <mxGeometry width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="+ presentarJuego(): void&lt;br&gt;+ solicitarCredito():number&lt;br&gt;+ iniciarJuego(): void" style="whiteSpace=wrap;html=1;align=left;" parent="19" vertex="1">
+                    <mxGeometry y="30" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="40" y="300" width="160" height="97.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Poker" style="rounded=0;whiteSpace=wrap;html=1;" parent="18" vertex="1">
+                    <mxGeometry width="160" height="35.45454545454545" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="+ presentarJuego(): void&lt;br&gt;+ solicitarCredito():number&lt;br&gt;+ iniciarJuego(): void" style="whiteSpace=wrap;html=1;align=left;" parent="18" vertex="1">
+                    <mxGeometry y="35.45454545454545" width="160" height="62.04545454545455" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="group;fillColor=default;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="490" y="300" width="190" height="159" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="TragamonedasClasico" style="rounded=0;whiteSpace=wrap;html=1;" parent="20" vertex="1">
+                    <mxGeometry width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="- simbolosYapa: string[];" style="whiteSpace=wrap;html=1;align=left;" parent="20" vertex="1">
+                    <mxGeometry y="40" width="190" height="39" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;div&gt;&amp;nbsp; + presentarJuego(): void&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; # chequearResultado(): void&lt;/div&gt;&lt;div&gt;&amp;nbsp; # yapa(simbolo: string): number&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="20" vertex="1">
+                    <mxGeometry y="79" width="190" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="880" y="50" width="160" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Carrete" style="html=1;" parent="22" vertex="1">
+                    <mxGeometry width="160" height="31.66666666666666" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+verSimbolo():string&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+getRetraso(): number&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+getVolocidad(): number&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+desacelerar(): number&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ resetearVelocidad():void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+girar(): void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="22" vertex="1">
+                    <mxGeometry y="85.95238095238093" width="160" height="104.04761904761904" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="- simbolos: string [ ]&lt;br&gt;- posicion: number&lt;br&gt;- velocidad: number" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="22" vertex="1">
+                    <mxGeometry y="31.66666666666666" width="160" height="54.28571428571428" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="40" y="20" width="280" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Casino" style="rounded=0;whiteSpace=wrap;html=1;" parent="27" vertex="1">
+                    <mxGeometry width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;span style=&quot;&quot;&gt;- nombre: string&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- tragamonedasClasico: TragamonedasClasico&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- tragamonedasMultilinea: TragamonedasMultilinea&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- poker: Poker&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- ruleta: Ruleta&lt;/span&gt;" style="whiteSpace=wrap;html=1;align=left;" parent="27" vertex="1">
+                    <mxGeometry y="40" width="280" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;span style=&quot;&quot;&gt;- chequearFondos(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- solicitarFondos(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;+ recibir(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- presentarCasino(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- elegirJuego(): number&lt;/span&gt;" style="whiteSpace=wrap;html=1;align=left;" parent="27" vertex="1">
+                    <mxGeometry y="130" width="280" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="620" y="40" width="170" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Tragamonedas" style="rounded=0;whiteSpace=wrap;html=1;" parent="31" vertex="1">
+                    <mxGeometry width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;span style=&quot;&quot;&gt;# carretes: Carretes&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;# simbolos: string&lt;/span&gt;" style="whiteSpace=wrap;html=1;align=left;" parent="31" vertex="1">
+                    <mxGeometry y="30" width="170" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="&lt;span style=&quot;&quot;&gt;+ getNombre(): string&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;+ presentarJuego(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;+ iniciarJuego(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;+ solicitarcredito(): number&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- mostrarSimbolos (): string&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- accionarPalanca(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;# chequearResultado(): void&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;- reordenar(): string&lt;/span&gt;" style="whiteSpace=wrap;html=1;align=left;" parent="31" vertex="1">
+                    <mxGeometry y="80" width="170" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="180" y="530" width="150" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Jugador" style="rounded=0;whiteSpace=wrap;html=1;" parent="35" vertex="1">
+                    <mxGeometry width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="- nombre: string&lt;br&gt;- edad: number&lt;br&gt;- fondos: number" style="whiteSpace=wrap;html=1;" parent="35" vertex="1">
+                    <mxGeometry y="30" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="+ getNombre(): string&lt;br&gt;+ getFondos(): number&lt;br&gt;+ getEdad(): number&lt;br&gt;+ agregarFondos(): void&lt;br&gt;+ apostar(): void" style="whiteSpace=wrap;html=1;" parent="35" vertex="1">
+                    <mxGeometry y="90" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="8" target="30" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="469.5" y="620" as="sourcePoint"/>
+                        <mxPoint x="520" y="540" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="5" target="30" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="149.5" y="635.5" as="sourcePoint"/>
+                        <mxPoint x="240" y="510" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" source="2" target="29" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="200" y="260" as="sourcePoint"/>
+                        <mxPoint x="300" y="330" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" parent="1" source="30" target="49" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="859.5" y="411.5" as="sourcePoint"/>
+                        <mxPoint x="629.6067415730338" y="490" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="14" target="25" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="740" y="712.5" as="sourcePoint"/>
+                        <mxPoint x="740" y="650" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" source="12" target="25" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="960" y="711.25" as="sourcePoint"/>
+                        <mxPoint x="960" y="648.75" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" source="5" target="25" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="420" y="444.5" as="sourcePoint"/>
+                        <mxPoint x="700" y="445" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="-8ZN7k2oq9kdG_u1vnV1-51" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;" parent="1" source="8" target="25" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="525" y="310" as="sourcePoint"/>
+                        <mxPoint x="330" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="-8ZN7k2oq9kdG_u1vnV1-52" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" parent="1" source="13" target="49" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="839" y="123.75" as="sourcePoint"/>
+                        <mxPoint x="495" y="533.6363636363636" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="-8ZN7k2oq9kdG_u1vnV1-54" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="17" target="49" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="343" y="410" as="sourcePoint"/>
+                        <mxPoint x="495" y="581.0526315789474" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="605" y="500" width="200" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="&lt;i style=&quot;&quot;&gt;&amp;lt;Abtracta&amp;gt;&lt;/i&gt;&lt;br style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;JuegoDeCasinoAbstrac&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="48">
+                    <mxGeometry width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="48" source="50" target="49">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# nombre: string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# apuestaMinima: number&lt;br&gt;# apuestaMaxima: number&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# dineroDisponible: number&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# dineroApostado: number&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# emojis : string&lt;/p&gt;" style="whiteSpace=wrap;html=1;align=left;" vertex="1" parent="48">
+                    <mxGeometry y="50" width="200" height="98.03" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getNombre(): string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ jugar(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# presentarJuego()*: void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# inicializarJuego()*: void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# solicitarFondos (): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# solicitarCreditos()*: number&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# pagarApuesta(): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# descontarApuestaPerdida():void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# apuestaEsValida(): boolean&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="48">
+                    <mxGeometry y="148.03285714285715" width="200.00000000000003" height="142.85714285714286" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

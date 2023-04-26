@@ -16,7 +16,7 @@ let respuesta: string = readlineSync.question("Ingrese su edad: ");
 const edad: number = Number(respuesta);
 
 if (isNaN(edad) || edad < 18) {
-    console.log(`${color.red}${emojis.edad} Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
+    console.log(`${color.red}${emojis.adult} Lo sentimos, si no eres mayor de edad, no puedes jugar.`);
     // process.exit(0)  // para terminar el programa.
 } else {
     respuesta = readlineSync.question("Ingrese su nombre: ")

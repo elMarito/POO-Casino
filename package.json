@@ -9,10 +9,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "se puede compilar todos los js?",
     "dev": "tsc -w",
     "devOpcion2": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "casino": "npm ./dist/index.js"
+    "build": "tsc index.ts",
+    "casinoJS": "node ./dist/index.js",
+    "casinoTS": "ts-node ./src/index.ts"
   }
 }
